@@ -1,6 +1,6 @@
 /* bitmap.c contains the code that handles the inode and block bitmaps */
 #include <string.h> 
-
+ 
 #include <linux/sched.h>
 #include <linux/kernel.h>
 
