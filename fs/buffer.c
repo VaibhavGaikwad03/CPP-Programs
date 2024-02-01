@@ -122,7 +122,7 @@ void __wait_on_buffer(struct buffer_head * bh)
 {
 	wait_on_bit_io(&bh->b_state, BH_Lock, TASK_UNINTERRUPTIBLE);
 }
-EXPORT_SYMBOL(__wait_on_buffer);
+EXPORT_SYMBOL(__wait_on_buffer); 
 
 static void buffer_io_error(struct buffer_head *bh, char *msg)
 {
