@@ -1,15 +1,3 @@
-/*
- * Removed a lot of unnecessary code and simplified things now that
- * the buffer cache isn't our primary cache - Andrew Tridgell 12/96
- *
- * Speed up hash, lru, and free list operations.  Use gfp() for allocating
- * hash table, use SLAB cache for buffer heads. SMP threading.  -DaveM
- *
- * Added 32k buffer block sizes - these are required older ARM systems. - RMK
- *
- * async buffer flushing, 1999 Andrea Arcangeli <andrea@suse.de>
- */
-
 #include <linux/kernel.h>
 #include <linux/sched/signal.h>
 #include <linux/syscalls.h>
