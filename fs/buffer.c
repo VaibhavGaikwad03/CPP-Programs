@@ -1,10 +1,3 @@
-// SPDX-License-Identifier: GPL-2.0-only
-/*
- *  linux/fs/buffer.c
- *
- *  Copyright (C) 1991, 1992, 2002  Linus Torvalds
- */
-
 /*
  * Start bdflush() with kernel_thread not syscall - Paul Gortmaker, 12/95
  *
