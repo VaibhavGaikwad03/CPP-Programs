@@ -11,7 +11,7 @@ static inline unsigned char fat_tolower(unsigned char c)
 {
 	return ((c >= 'A') && (c <= 'Z')) ? c+32 : c;
 }
-
+ 
 static inline loff_t fat_make_i_pos(struct super_block *sb,
 				    struct buffer_head *bh,
 				    struct msdos_dir_entry *de)
