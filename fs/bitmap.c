@@ -28,7 +28,6 @@ __asm__("cld\n" \
 	"bsfl %%eax,%%edx\n\t" \
 	"je 2f\n\t" \
 	"addl %%edx,%%ecx\n\t" \
-	"jmp 3f\n" \
 	"2:\taddl $32,%%ecx\n\t" \
 	"cmpl $8192,%%ecx\n\t" \
 	"jl 1b\n" \
