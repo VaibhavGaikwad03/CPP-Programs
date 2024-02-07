@@ -16,7 +16,7 @@ print:
     je .done
     call print_charORG 0x7c00
 BITS 16
-
+ 
 start: 
     mov si, message
     call print
