@@ -43,16 +43,6 @@ static inline void fat_dir_readahead(struct inode *dir, sector_t iblock,
 	brelse(bh);
 }
 
-/* Returns the inode number of the directory entry at offset pos. If bh is
-   non-NULL, it is brelse'd before. Pos is incremented. The buffer header is
-   returned in bh.
-   AV. Most often we do it item-by-item. Makes sense to optimize.
-   AV. OK, there we go: if both bh and de are non-NULL we assume that we just
-   AV. want the next entry (took one explicit de=NULL in vfat/namei.c).
-   AV. It's done in fat_get_entry() (inlined), here the slow case lives.
-   AV. Additionally, when we return -1 (i.e. reached the end of directory)
-   AV. we make bh NULL.
- */
 static int fat__get_entry(struct inode *dir, loff_t *pos,
 			  struct buffer_head **bh, struct msdos_dir_entry **de)
 {
@@ -102,16 +92,6 @@ static inline int fat_get_entry(struct inode *dir, loff_t *pos,
 	return fat__get_entry(dir, pos, bh, de);
 }
 
-/*
- * Convert Unicode 16 to UTF-8, translated Unicode, or ASCII.
- * If uni_xlate is enabled and we can't get a 1:1 conversion, use a
- * colon as an escape character since it is normally invalid on the vfat
- * filesystem. The following four characters are the hexadecimal digits
- * of Unicode value. This lets us do a full dump and restore of Unicode
- * filenames. We could get into some trouble with long Unicode names,
- * but ignore that right now.
- * Ahem... Stack smashing in ring 0 isn't fun. Fixed.
- */
 static int uni16_to_x8(struct super_block *sb, unsigned char *ascii,
 		       const wchar_t *uni, int len, struct nls_table *nls)
 {
